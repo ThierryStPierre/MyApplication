@@ -8,14 +8,18 @@ import android.widget.TextView;
 
 import java.util.Iterator;
 import java.util.List;
+
+import com.apprentissage.tallyhop.dbfrontest.Objets.Competence;
 import com.apprentissage.tallyhop.dbfrontest.Objets.Equipe;
 import com.apprentissage.tallyhop.dbfrontest.Objets.Joueur;
 import com.apprentissage.tallyhop.dbfrontest.Objets.Ligue;
+import com.apprentissage.tallyhop.dbfrontest.Objets.LoginObject;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView displayTextView;
     private DataBaseFront dbF;
-    Button listeJoueurs, listeLigues, listeEquipes, listeGestionnaires, ListJoueursParEquipe, ListJoueursParLigue;
+    Button listeJoueurs, listeLigues, listeEquipes, listeGestionnaires, ListJoueursParEquipe;
+    Button ListJoueursParLigue, ListTotoWasHere, ListLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listeGestionnaires = (Button)findViewById(R.id.listeGestionnaires);
         ListJoueursParEquipe = (Button)findViewById(R.id.ListJoueursParEquipe);
         ListJoueursParLigue = (Button)findViewById(R.id.ListJoueursParLigue);
+        ListLogin = (Button)findViewById(R.id.ListLogin);
+        ListTotoWasHere = (Button)findViewById(R.id.ListTotoWasHere);
 
         listeJoueurs.setOnClickListener(this);
         listeLigues.setOnClickListener(this);
@@ -36,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listeGestionnaires.setOnClickListener(this);
         ListJoueursParEquipe.setOnClickListener(this);
         ListJoueursParLigue.setOnClickListener(this);
+        ListTotoWasHere.setOnClickListener(this);
+        ListLogin.setOnClickListener(this);
     }
 
     @Override
@@ -56,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.ListJoueursParEquipe:
-                list = dbF.getListJoueursParEquipe(2,3);
+                list = dbF.getListJoueursParEquipe(2, 3);
                 if(list != null){
                     Iterator<Joueur> iter = list.iterator();
                     while(iter.hasNext()){
@@ -104,7 +112,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         response += j.toString() + "\n";
                     }
                 }
-
+                break;
+            case R.id.ListLogin: {
+                System.out.print("MainActivity ListLogin ");
+                System.out.flush();
+                LoginObject loginObj = dbF.validateLogin("blavillier", "54321");
+                if (loginObj != null) {
+                    System.out.print("MainActivity loginObj " + loginObj);
+                    System.out.flush();
+                    Iterator<Competence> iter = loginObj.getCompetences().iterator();
+                    while (iter.hasNext()) {
+                        Competence j = iter.next();
+                        System.out.print("MainActivity loginObj Competence = " + j + "\n\n");
+                        System.out.flush();
+                        response += j.toString() + "\n";
+                    }
+                }
+            }
                 break;
             default:
                 break;

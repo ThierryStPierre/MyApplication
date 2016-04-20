@@ -3,9 +3,11 @@ package com.apprentissage.tallyhop.dbfrontest;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.apprentissage.tallyhop.dbfrontest.Objets.Competence;
 import com.apprentissage.tallyhop.dbfrontest.Objets.Equipe;
 import com.apprentissage.tallyhop.dbfrontest.Objets.Joueur;
 import com.apprentissage.tallyhop.dbfrontest.Objets.Ligue;
+import com.apprentissage.tallyhop.dbfrontest.Objets.LoginObject;
 
 import java.util.List;
 
@@ -42,12 +44,24 @@ public class DbAccessSqlite extends DbAccess{
     }
 
     @Override
+    public List<Ligue> getListAccreditedLigues(int idMarqueur) {
+        return null;
+    }
+
+    @Override
     public List<Equipe> getListEquipes(int idLigue) {
         return null;
     }
 
     @Override
     public List<Joueur> getListGestionnaires() {
+        return null;
+    }
+
+    @Override
+    public LoginObject validateLogin(String user, String pass) {
+        System.out.print("DbAccessSQLite validateLogin");
+        System.out.flush();
         return null;
     }
 }

@@ -1,11 +1,13 @@
 package com.apprentissage.tallyhop.dbfrontest;
 
 import android.content.Context;
-import android.database.Cursor;
+import android.net.ConnectivityManager;
 
 import com.apprentissage.tallyhop.dbfrontest.Objets.Equipe;
 import com.apprentissage.tallyhop.dbfrontest.Objets.Joueur;
 import com.apprentissage.tallyhop.dbfrontest.Objets.Ligue;
+import com.apprentissage.tallyhop.dbfrontest.Objets.LoginObject;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -20,8 +22,6 @@ import java.util.List;
 /**
  * Created by 201596474 on 2016-03-11.
  */
-
-import android.net.ConnectivityManager;
 
 public class DataBaseFront extends DbAccess {
     DbAccess dba = null;
@@ -111,4 +111,15 @@ public class DataBaseFront extends DbAccess {
     public List<Joueur> getListGestionnaires() {
         return dba.getListGestionnaires();
     }
+
+    @Override
+    public LoginObject validateLogin(String user, String pass) {
+        return dba.validateLogin(user, pass);
+    }
+
+    @Override
+    public List<Ligue> getListAccreditedLigues(int idMarqueur){
+        return dba.getListAccreditedLigues(idMarqueur);
+    }
+
 }

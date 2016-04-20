@@ -19,6 +19,18 @@ public class JSONParser {
         }
     }
 
+    public String getStatus(){
+        if(reader != null)
+            try{
+            return reader.getString("Status");
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return null;
+            }
+        else
+            return null;
+    }
+
     public JSONArray getList(String str){
         System.out.print("JSONParser.getList() str = " + str + "\n\n");
         System.out.flush();
@@ -28,4 +40,12 @@ public class JSONParser {
             return null;
     }
 
+    public JSONObject getJSONObject(String str){
+        System.out.print("JSONParser.getJSONObject() str = " + str + "\n\n");
+        System.out.flush();
+        if(reader != null)
+            return reader.optJSONObject(str);
+        else
+            return null;
+    }
 }
