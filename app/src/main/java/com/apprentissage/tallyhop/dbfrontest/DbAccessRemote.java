@@ -244,7 +244,7 @@ public class DbAccessRemote extends DbAccess{
         JSONArray ligueArray = parser.getList("Equipes");
         String status = parser.getStatus();
         if(status.equalsIgnoreCase("Success")) {
-            System.out.print("DataBaseFront.getListEquipes() ligueArray  = " + ligueArray + "\n\n");
+            System.out.print("DbAccessRemote.getListEquipes() ligueArray  = " + ligueArray + "\n\n");
             System.out.flush();
             if (ligueArray != null) {
                 liste = new ArrayList<Equipe>();

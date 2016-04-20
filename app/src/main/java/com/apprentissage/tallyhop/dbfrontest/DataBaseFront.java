@@ -121,5 +121,4 @@ public class DataBaseFront extends DbAccess {
     public List<Ligue> getListAccreditedLigues(int idMarqueur){
         return dba.getListAccreditedLigues(idMarqueur);
     }
-
 }

@@ -68,10 +68,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <Button
-                    android:id="@+id/ListTotoWasHere"
+                    android:id="@+id/LigueParMarqueur"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Joueu/Equi"/>
+                    android:text="Lig/Marq"/>
                 <Button
                     android:id="@+id/ListLogin"
                     android:layout_width="wrap_content"

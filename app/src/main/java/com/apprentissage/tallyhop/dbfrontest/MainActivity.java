@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView displayTextView;
     private DataBaseFront dbF;
     Button listeJoueurs, listeLigues, listeEquipes, listeGestionnaires, ListJoueursParEquipe;
-    Button ListJoueursParLigue, ListTotoWasHere, ListLogin;
+    Button ListJoueursParLigue, LigueParMarqueur, ListLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ListJoueursParEquipe = (Button)findViewById(R.id.ListJoueursParEquipe);
         ListJoueursParLigue = (Button)findViewById(R.id.ListJoueursParLigue);
         ListLogin = (Button)findViewById(R.id.ListLogin);
-        ListTotoWasHere = (Button)findViewById(R.id.ListTotoWasHere);
+        LigueParMarqueur = (Button)findViewById(R.id.LigueParMarqueur);
 
         listeJoueurs.setOnClickListener(this);
         listeLigues.setOnClickListener(this);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         listeGestionnaires.setOnClickListener(this);
         ListJoueursParEquipe.setOnClickListener(this);
         ListJoueursParLigue.setOnClickListener(this);
-        ListTotoWasHere.setOnClickListener(this);
+        LigueParMarqueur.setOnClickListener(this);
         ListLogin.setOnClickListener(this);
     }
 
@@ -129,6 +129,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
             }
+            case R.id.LigueParMarqueur:
+                listL = dbF.getListAccreditedLigues(4);
+                if(listL != null){
+                    Iterator<Ligue> iter = listL.iterator();
+                    while(iter.hasNext()){
+                        Ligue  j = iter.next();
+                        response += j.toString() + "\n";
+                    }
+                }
                 break;
             default:
                 break;
